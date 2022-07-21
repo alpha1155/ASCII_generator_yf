@@ -73,7 +73,7 @@ def getImg(imgParam):
 if __name__ == '__main__':
     imgParam = {
         "img_url": 'https://c2cpicdw.qpic.cn/offpic_new/0/2931470156-1644525957-E9DC8C8A20E03758A1A37C5830C6625B/0?term=3',
-        "output": ".\\data\\testInternet0.jpg",
+        "output": "success.jpg",
         'language': 'chinese',
         "mode": "standard",
         "background": "white",
