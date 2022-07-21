@@ -62,6 +62,7 @@ def getImg(imgParam):
     else:
         cropped_image = out_image.getbbox()
     out_image = out_image.crop(cropped_image)
+    print(os.path.split(os.path.realpath(__file__))[0]+'\\data\\')
     out_image.save(os.path.split(os.path.realpath(__file__))
                    [0]+'\\data\\' + imgParam['output'])
 
