@@ -1,6 +1,8 @@
+import os
+import datetime
 from sanic import Sanic
-from sanic.response import json, text
 from img2img_color_api import getImg
+from sanic.response import json, text
 app = Sanic("MyHelloWorldApp")
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=7788)
@@ -11,14 +13,14 @@ async def hello_world(request):
     return text("Hello, world.")
 
 
-@app.get("/picture")
+@app.post("/picture")
 async def hello_world(request):
-    imgParam = {"input": ".\\data\\jinx.png",
-                "output": ".\\data\\jinx_Ascii_black.jpg",
-                'language': 'chinese',
-                "mode": "standard",
-                "background": "black",
-                "num_cols": 1100,
-                "scale": 2}
-    getImg(imgParam)
-    return json({"ddd": "jhhlhph."})
+    req = request.json["imgParam"]
+    now_time = str(datetime.datetime.now())
+    specialChars = "-:. "
+    for specialChar in specialChars:
+        now_time = now_time.replace(specialChar, '_')
+    req["output"] = os.path.split(os.path.realpath(__file__))[
+        0]+'\\data\\' + req['background']+'_'+req['language']+'_' + str(req['num_cols'])+'_' + now_time + '_' + 'hello.png'
+    getImg(req)
+    return json({"received": True, "message": req['output']})

@@ -1,14 +1,17 @@
-"""
-@author: Viet Nguyen <nhviet1009@gmail.com>
-python .\img2img_color_api.py --input .\data\jinx.jpg --background white  --num_cols 1100 --language chinese --output .\data\jinx_Ascii.jpg
-"""
-# from ast import Param
+# import requests
 
-from urllib import request
+# res = requests.get(
+#     "https://gchat.qpic.cn/gchatpic_new/2931470156/736599314-3070512006-9975D3B5EEF8B2F067D27D6340D2F77D/0?term=3,subType=0")
+# print(dir(res))
+# print(res.content)
+
+import os
 import cv2
+import datetime
 import numpy as np
-from PIL import Image, ImageDraw, ImageOps
 from utils import get_data
+from urllib import request
+from PIL import Image, ImageDraw, ImageOps
 
 
 def getImg(imgParam):
@@ -59,18 +62,24 @@ def getImg(imgParam):
     else:
         cropped_image = out_image.getbbox()
     out_image = out_image.crop(cropped_image)
-    out_image.save(imgParam['output'])
+    out_image.save(os.path.split(os.path.realpath(__file__))
+                   [0]+'\\data\\' + imgParam['output'])
 
 
 if __name__ == '__main__':
     imgParam = {
         "img_url": 'https://c2cpicdw.qpic.cn/offpic_new/0/2931470156-1644525957-E9DC8C8A20E03758A1A37C5830C6625B/0?term=3',
-        "output": ".\\data\\testInternet0.jpg",
+        "output": "ercrftvgybhu.jpg",
         'language': 'chinese',
         "mode": "standard",
         "background": "white",
         "num_cols": 300,
         "scale": 2}
 
-    print(imgParam)
-    getImg(imgParam)
+    # print(os.path.realpath(__file__))
+    # print(os.path.split(os.path.realpath(__file__))[0])
+    # print(imgParam)
+    # print(os.path.split(os.path.realpath(__file__))[0])
+    # getImg(imgParam)
+    now_time = datetime.datetime.now()
+    print(now_time)
