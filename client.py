@@ -8,6 +8,7 @@
 import os
 import cv2
 import datetime
+import platform
 import numpy as np
 from utils import get_data
 from urllib import request
@@ -62,9 +63,12 @@ def getImg(imgParam):
     else:
         cropped_image = out_image.getbbox()
     out_image = out_image.crop(cropped_image)
-    print(os.path.split(os.path.realpath(__file__))[0]+'\\data\\')
-    out_image.save(os.path.split(os.path.realpath(__file__))
-                   [0]+'\\data\\' + imgParam['output'])
+    path = os.path.split(os.path.realpath(__file__))[0]
+    host_os = platform.system()
+    if "Windows" == host_os:
+        out_image.save(path+'\\data\\' + imgParam['output'])
+    else:
+        out_image.save(path+'/data/' + imgParam['output'])
 
 
 if __name__ == '__main__':
