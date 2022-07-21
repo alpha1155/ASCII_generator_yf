@@ -17,6 +17,7 @@ async def hello_world(request):
 @app.post("/picture")
 async def hello_world(request):
     req = request.json["imgParam"]
+    print(req)
     now_time = str(datetime.datetime.now())
     specialChars = "-:. "
     for specialChar in specialChars:
