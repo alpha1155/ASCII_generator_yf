@@ -4,11 +4,14 @@ python .\img2img_color_api.py --input .\data\jinx.jpg --background white  --num_
 """
 # from ast import Param
 
-from urllib import request
+import os
 import cv2
+import datetime
+import platform
 import numpy as np
-from PIL import Image, ImageDraw, ImageOps
 from utils import get_data
+from urllib import request
+from PIL import Image, ImageDraw, ImageOps
 
 
 def getImg(imgParam):
