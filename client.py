@@ -80,6 +80,6 @@ if __name__ == '__main__':
     # print(os.path.split(os.path.realpath(__file__))[0])
     # print(imgParam)
     # print(os.path.split(os.path.realpath(__file__))[0])
-getImg(imgParam)
+    getImg(imgParam)
 # now_time = datetime.datetime.now()
 # print(now_time)
