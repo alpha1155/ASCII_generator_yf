@@ -62,12 +62,7 @@ def getImg(imgParam):
     else:
         cropped_image = out_image.getbbox()
     out_image = out_image.crop(cropped_image)
-    path = os.path.split(os.path.realpath(__file__))[0]
-    host_os = platform.system()
-    if "Windows" == host_os:
-        out_image.save(path+'\\data\\' + imgParam['output'])
-    else:
-        out_image.save(path+'/data/' + imgParam['output'])
+    out_image.save(imgParam['output'])
 
 
 if __name__ == '__main__':
